@@ -1,0 +1,18 @@
+.header-container {
+    height: 300px;
+    background: linear-gradient(135deg, #0d1124, #142224);
+    color: white;
+}
+
+.header-title {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #f783ac, #74c0fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #0d6efd;
+}
