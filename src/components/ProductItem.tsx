@@ -1,3 +1,4 @@
+import useCart from "../context/useCart";
 import { Product } from "./ProductsListComp";
 
 interface ProductItemProps {
@@ -5,6 +6,8 @@ interface ProductItemProps {
 }
 
 export default function ProductItem({ product }: ProductItemProps) {
+    const { addToCart } = useCart();
+
     return (
         <div className="col-md-4 mb-4">
             <div className="card h-100">
@@ -14,6 +17,9 @@ export default function ProductItem({ product }: ProductItemProps) {
                     <p className="card-text">
                         <strong>Current Price:</strong> ${product.price}
                     </p>
+                    <button className="btn btn-primary" onClick={() => addToCart(product)}>
+                        Add to Cart
+                    </button>
                 </div>
             </div>
         </div>

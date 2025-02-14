@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../context/useAuth";
+import useCart from "../context/useCart";
 
 export default function Navbar() {
+    const { isAuthenticated, logout } = useAuth();
+    const { totalQuantity } = useCart();
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container">
@@ -20,18 +25,29 @@ export default function Navbar() {
                         <li className="nav-item">
                             <NavLink to="/cart" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
                                 Cart
+                                {totalQuantity > 0 && <span className="badge bg-danger ms-1">{totalQuantity}</span>}
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/login" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
-                                Login
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/register" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
-                                Register
-                            </NavLink>
-                        </li>
+                        {isAuthenticated ? (
+                            <li className="nav-item d-flex align-items-center">
+                                <button onClick={logout} className="btn btn-danger btn-sm ms-2" style={{ borderRadius: "5px", padding: "5px 10px" }}>
+                                    Logout
+                                </button>
+                            </li>
+                        ) : (
+                            <>
+                                <li className="nav-item">
+                                    <NavLink to="/login" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
+                                        Login
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink to="/register" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
+                                        Register
+                                    </NavLink>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>
