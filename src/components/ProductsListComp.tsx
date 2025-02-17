@@ -1,19 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
-
-export interface Product {
-    id: number;
-    title: string;
-    thumbnail: string;
-    price: number;
-    category: string;
-}
-
-interface Category {
-    slug: string;
-    name: string;
-    url: string;
-}
+import { Category, Product } from "../types/types";
 
 export default function ProductsList() {
     const [loading, setLoading] = useState<boolean>(true);
