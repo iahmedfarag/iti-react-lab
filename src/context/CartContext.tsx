@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
-import { Product } from "../components/ProductsListComp";
 import { toast } from "react-toastify";
+import { Product } from "../types/types";
 
 interface CartItem extends Product {
     quantity: number;
