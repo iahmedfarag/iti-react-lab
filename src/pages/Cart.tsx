@@ -104,6 +104,8 @@ export default function Cart() {
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    console.log(cart);
+
     return (
         <>
             <Navbar />

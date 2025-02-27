@@ -32,13 +32,20 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
+const queryClient = new QueryClient();
+
 root.render(
     <BrowserRouter>
         <Provider store={store}>
-            <App />
-            <ToastContainer />
+            <QueryClientProvider client={queryClient}>
+                <App />
+                <ToastContainer />
+                <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
         </Provider>
     </BrowserRouter>
 );
